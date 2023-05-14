@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+
+}
+
+<body>
+    <!--@using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div>@Html.Label("User name")</div>
+            <div>@Html.TextBox("username")</div>
+            <div>@Html.Label("Password")</div>
+            <div>@Html.Password("password")</div>
+            <div>@Html.Label("Role")</div>
+            <div>
+                @Html.DropDownList("roles", new List<SelectListItem>
+            {
+                new SelectListItem{ Text="---Select your role---", Value = "0" },
+                new SelectListItem{ Text="Administrator role", Value = "1" },
+                new SelectListItem{ Text="Training Staff role", Value = "2" },
+                new SelectListItem{ Text="Trainer role", Value = "3" },
+            }, new { style = "width: 180px;" })
+            </div>
+            <input class="w3-button w3-black w3-section" type="submit" value=" Login " />
+        </div>
+    }-->
+    @*<div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div>
+                    <h2 class="text-center">Login Page</h2>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-4 col-md-offset-4col-md-12">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="form-group">
+                                    <div>@Html.Label("User name")</div>
+                                    <div>@Html.TextBox("username")</div>
+                                    <div>@Html.Label("Password")</div>
+                                    <div>@Html.Password("password")</div>
+                                    <div>@Html.Label("Role")</div>
+                                    <div>
+                                        @Html.DropDownList("roles", new List<SelectListItem>
+                                    {
+                                        new SelectListItem{ Text="---Select your role---", Value = "0" },
+                                        new SelectListItem{ Text="Administrator role", Value = "1" },
+                                        new SelectListItem{ Text="Training Staff role", Value = "2" },
+                                        new SelectListItem{ Text="Trainer role", Value = "3" },
+                                    }, new { style = "width: 190px;" })
+                                    </div>
+                                    <input type="submit" value=" Login " class="mu-post-btn">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+    <div class="login-center">
+        <div class="content">
+
+            <h3 class="text-center">Login</h3>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <div>@Html.Label("Username")</div>
+                    <div>@Html.TextBox("username", null, new { placeholder = "Username", @class = "form-control " })</div>
+                </div>
+                <div class="form-group">
+                    <div>@Html.Label("Password")</div>
+                    <div>@Html.Password("password", null, new { placeholder = "Password", @class = "form-control" })</div>
+                </div>
+
+                <div class="form-group">
+                    <div>@Html.Label("Role")</div>
+                </div>
+                <div>
+                    @Html.DropDownList("roles", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="--- Select your role ---", Value = "0" },
+                    new SelectListItem{ Text="Administrator role", Value = "1" },
+                    new SelectListItem{ Text="Training Staff role", Value = "2" },
+                    new SelectListItem{ Text="Trainer role", Value = "3" },
+                }, new { style = "width: 190px;", @class = "form-control" })
+                </div>
+
+                <br />
+
+                <input type="submit" value=" Login " class="btn btn-primary">
+
+
+            }
+        </div>
+    </div>
+
+</body>
+
+

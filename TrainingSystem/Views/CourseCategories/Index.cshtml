@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TrainingSystem.Models.CourseCategories>
+
+@{
+    ViewBag.Title = "CourseCategories";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Course Categories</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Course Categories", "Index", "CourseCategories")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6 col-xs-5">
+                    @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-success pull-left col-md-2" })
+                </div>
+
+                <div class="input-group col-md-6 col-xs-7">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tr class="bg-primary">
+                        <th>
+                            @Html.DisplayNameFor(model => model.category_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.category_descriptions)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="Search">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.category_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.category_descriptions)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.categoryID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.categoryID })
+                            </td>
+                        </tr>
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+
+
+
+

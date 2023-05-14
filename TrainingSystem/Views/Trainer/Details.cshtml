@@ -1,0 +1,108 @@
+﻿@model TrainingSystem.Models.Trainer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Trainer Details</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Trainer Details", "Details", "Trainer")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_workingplace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_workingplace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_email)
+        </dd>
+
+    </dl>
+</div>
+
+<br />
+
+<table class="table table-bordered">
+    <tr class="bg-info">
+        <th>
+            Course Name
+        </th>
+        <th>
+            Start Date
+        </th>
+        <th> 
+            End Date
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.AssignCourse)
+    {
+        <tr>
+            <td>
+                @item.Courses.course_name
+            </td>
+
+            <td>
+                @item.Courses.startDate.ToString("MM/dd/yyyy")
+            </td>
+
+            <td>
+                @item.Courses.endDate.ToString("MM/dd/yyyy")
+            </td>
+           
+        </tr>
+    }
+
+</table>
+

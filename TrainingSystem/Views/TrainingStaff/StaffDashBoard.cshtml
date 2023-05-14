@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "StaffDashBoard";
+    /*Layout = "~/Views/Shared/_Layout1.cshtml";*/
+}
+
+<!--<h2 class="w3-text-teal">Staff DashBoard</h2>
+<div class="list-group">
+    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+        <li>
+            @Html.ActionLink("Change Password", "ChangePassword", "TrainingStaff")
+        </li>
+        <li>
+            @Html.ActionLink("Update Profile", "UpdateProfile", "TrainingStaff")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Trainer ", "Index", "Trainer")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Trainee", "Index", "Trainee")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Course", "Index", "Courses")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Course Categories", "Index", "CourseCategories")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Enroll", "Index", "Enroll")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Assign Course", "Index", "AssignCourse")
+        </li>
+    </ul>
+</div>
+    -->
+
+<section id="mu-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-page-breadcrumb-area">
+                    <h2>Training Staff</h2>
+                    <ol class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="active">@Html.ActionLink("Staff Dashboard", "StaffDashBoard", "TrainingStaff")</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-course-content-area">
+                    <div class="mu-course-container mu-course-details">
+                            <div class="col-md-4">
+                                <div class="mu-contact-left">
+                                    <img src="~/Images/study.jpg" width="100%" height="450" frameborder="0" style="border:0">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="mu-contact-right">
+                                    <div class="mu-latest-course-single-content">
+                                        <h3>Manage Account</h3>
+                                        <hr />
+                                        <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+                                            <li>
+                                                @Html.ActionLink("Change Password", "ChangePassword", "TrainingStaff")
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Update Profile", "UpdateProfile", "TrainingStaff")
+                                            </li>
+                                        </ul>
+                                        
+                                        <h3>Manage Course</h3>
+                                        <hr />
+                                        <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+                                            <li>
+                                                @Html.ActionLink("Manage Course", "Index", "Courses")
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Manage Course Categories", "Index", "CourseCategories")
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Manage Assign Course", "Index", "AssignCourse")
+                                            </li>
+
+                                            <li>
+                                                @Html.ActionLink("Manage Enroll", "Index", "Enroll")
+                                            </li>
+
+                                            <li>
+                                                @Html.ActionLink("Manage Topic", "Index", "Topic")
+                                            </li>
+
+                                            <li>
+                                                @Html.ActionLink("Manage Schedule", "Index", "Events")
+                                            </li>
+
+                                            <li>
+                                                @Html.ActionLink("Manage Request", "Index", "Request")
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+

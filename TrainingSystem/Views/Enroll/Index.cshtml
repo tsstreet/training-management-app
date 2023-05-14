@@ -1,0 +1,149 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<TrainingSystem.Models.Enroll>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Enroll</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Enroll", "Index", "Enroll")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-3 col-xs-3">
+                    @Html.ActionLink("Enroll", "Create", null, new { @class = "btn btn-success" })
+                </div>
+
+                <div class="col-md-3 col-xs-4">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            @Html.DropDownList("courseID", null, "Select Course", htmlAttributes: new
+                            {
+                                @class = "form-control",
+                                onchange = "this.form.submit()"
+                            })
+                        </div>
+                    }
+                </div>
+
+                <div class="input-group col-md-5 col-xs-5">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr class="bg-primary">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Courses.course_name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainee.trainee_username)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainee.trainee_fullname)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainee.trainee_email)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainee.trainee_phone)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainee.trainee_address)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="Search">
+
+                            <td>
+                                <a href="@Url.Action("ViewDetails", "Courses", new { id = item.Courses.courseID})">@Html.DisplayFor(modelItem => item.Courses.course_name)</a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Trainee", new { id = item.Trainee.traineeID})">@Html.DisplayFor(modelItem => item.Trainee.trainee_username)</a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainee.trainee_fullname)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainee.trainee_email)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainee.trainee_phone)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainee.trainee_address)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.enrollID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.enrollID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

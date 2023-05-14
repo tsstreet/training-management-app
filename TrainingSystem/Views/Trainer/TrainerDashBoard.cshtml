@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "TrainerDashBoard";
+    //Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!--<div class="list-group">
+    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+        <li>
+            @Html.ActionLink("Change Password", "ChangePassword", "Trainer")
+        </li>
+        <li>
+            @Html.ActionLink("Update Profile", "UpdateProfile", "Trainer")
+        </li>
+    </ul>
+</div>-->
+
+<section id="mu-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-page-breadcrumb-area">
+                    <h2>Trainer</h2>
+                    <ol class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="active">@Html.ActionLink("Trainer Dashboard", "TrainerDashBoard", "Trainer")</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-course-content-area">
+                    <div class="mu-course-container mu-course-details">
+                        <div class="col-md-4">
+                            <div class="mu-contact-left">
+                                <img src="~/Images/study.jpg" width="100%" height="450" frameborder="0" style="border:0">
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="mu-contact-right">
+                                <div class="mu-latest-course-single-content">
+                                    <h3>Manage Account</h3>
+                                    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+                                        <li>
+                                            @Html.ActionLink("Change Password", "ChangePassword", "Trainer")
+                                        </li>
+
+                                        <li>
+                                            @Html.ActionLink("Update Profile", "UpdateProfile", "Trainer")
+                                        </li>
+                                    </ul>
+                                    <h3>View Information</h3>
+                                    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+
+                                        <li>
+                                            @Html.ActionLink("View Assign Course", "ShowAssignCourse", "AssignCourse")
+                                        </li>
+
+                                        <li>
+                                            @Html.ActionLink("View Request", "ShowRequest", "Request")
+                                        </li>
+
+                                        <li>
+                                            @Html.ActionLink("View Schedule", "ScheduleByUser", "Events")
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

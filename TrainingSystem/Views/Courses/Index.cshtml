@@ -1,0 +1,153 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<TrainingSystem.Models.Courses>
+
+@if (Session["Staff_UserName"] == null)
+{
+    Response.Redirect(Url.Action("ShowCourses", "Courses", null));
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Courses</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Courses", "Index", "Courses")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6 col-xs-5">
+                    @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-success pull-left col-md-2" })
+                </div>
+               
+                <div class="input-group col-md-6 col-xs-7">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+            </div>              
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                        <tr class="bg-primary">
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().course_name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().course_image)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().course_materials)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().startDate)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().endDate)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().numStd)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().course_duration)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().course_status)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="Search">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.course_name)
+                            </td>
+                            <td>
+                                <div id="img">
+                                    <img src="@Url.Content("~/Images/"+item.course_image)"
+                                         width="150" height="150" style="border-radius:5px; border-style:solid;
+                                                      border-width:2px;" />
+                                </div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.course_materials)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.startDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.endDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.numStd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.course_duration)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.course_status)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.courseID }) |
+                                @Html.ActionLink("Details", "ViewDetails", new { id = item.courseID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.courseID }) |
+                                @Html.ActionLink("Download", "Download", new { courseMaterial = item.course_materials })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+    
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>

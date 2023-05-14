@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @*<link rel="shortcut icon" href="~/assets/img/favicon.ico" type="image/x-icon">*@
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- LOGO -->
+                <!-- TEXT BASED LOGO -->
+                <a class="navbar-brand" href="/Home/Index"><i class="glyphicon glyphicon-fire"></i><span> Vursito</span></a>
+                <!-- IMG BASED LOGO  -->
+                <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Courses", "ShowCourses", "Courses")</li>
+                    <li>@Html.ActionLink("Schedule", "Schedule", "Events")</li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["ID"] != null)
+                    {
+                        if (Session["Admin_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Admin_UserName"].ToString() + "!", "AdminDashBoard", "Administrators", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+                            <li>
+                                @Html.ActionLink("Admin Dashboard", "AdminDashBoard", "Administrators")
+                            </li>
+                        }
+                        else if (Session["Staff_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Staff_UserName"].ToString() + "!", "StaffDashBoard", "TrainingStaff", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+                            <li>
+                                @Html.ActionLink("Staff Dashboard", "StaffDashBoard", "TrainingStaff")
+                            </li>
+                        }
+                        else if (Session["Trainer_Username"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Hello: " + @Session["Trainer_UserName"].ToString() + "!", "TrainerDashBoard", "Trainer", routeValues: null, htmlAttributes: new { title = "Manage" }) <!--tạm thời click vào user name thì link đến trang Index của Courses-->
+                            </li>
+                            <li>
+                                @Html.ActionLink("Trainer Dashboard", "TrainerDashBoard", "Trainer")
+                            </li>
+                        }
+                        <li>
+                            @Html.ActionLink("Logout", "Logout", "Home")
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Log in", "Login", "Home")</li>
+                    }
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="h3">About Us</div>
+                    <div>Vursito is an internal training management system that assists businesses in assigning training courses to employees as well as tracking learning progress.</div>
+                </div>
+
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3">
+                    <div class="h3">Support</div>
+                    <div>
+                        <a href="">Advertising</a><br />
+
+                        <a href="">Terms & Conditions</a><br />
+                        <a href="">Privacy Policy</a><br />
+                    </div>
+                </div>
+
+                @*<div class="col-lg-1"></div>*@
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <div class="h3">Contact</div>
+                    <div>
+                        <form>
+                            <div class="input-group">
+                                <input type="text" name="" class="form-control" placeholder="Enter your email" />
+                                <div class="input-group-btn ">
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        Join our newsletter for the latest updates.
+                    </div>
+                </div>
+            </div>
+            </div>
+    </footer>
+    
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var docHeight = $(window).height();
+            var footerHeight = $('#footer').height();
+            var footerTop = $('#footer').position().top + footerHeight;
+
+            if (footerTop < docHeight)
+                $('footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
+
+        });
+    </script>
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,141 @@
+﻿@model TrainingSystem.Models.Courses
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Course Detail</h2>
+                <ol class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Course Detail", "Details", "Courses")</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <figure>
+                                <a><img src="@Url.Content("~/Images/" + Model.course_image)" class="img-responsive" /></a>
+                            </figure>
+                            <h2>@Html.DisplayFor(model => model.course_name)</h2>
+                            <h4>Course Information</h4>
+                            <ul>
+                                <li> <span>@Html.DisplayNameFor(model => model.course_name)</span> <span>@Html.DisplayFor(model => model.course_name)</span></li>
+                                <li> <span>@Html.DisplayNameFor(model => model.CourseCategories.category_name)</span> <span>@Html.DisplayFor(model => model.CourseCategories.category_name)</span></li>
+
+                                <li> <span>@Html.DisplayNameFor(model => model.course_duration)</span> <span>@Html.DisplayFor(model => model.course_duration)</span></li>
+                                <li> <span>@Html.DisplayNameFor(model => model.startDate)</span> <span>@Html.DisplayFor(model => model.startDate)</span></li>
+
+                            </ul>
+
+                            <h4>Description</h4>
+                            @Html.DisplayFor(model => model.course_descriptions)
+                            <h4>Course Outline</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th> Title </th>
+                                            <th> Course Time </th>
+                                            <th> Spent Time </th>
+                                            <th> Status </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> 1. Topic 1 </td>
+                                            <td> 15:30 </td>
+                                            <td> 13:80 </td>
+                                            <td> Successful </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 2. Topic 2 </td>
+                                            <td> 15:30 </td>
+                                            <td> 13:80 </td>
+                                            <td> Successful </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 3. Topic 3 </td>
+                                            <td> 15:30 </td>
+                                            <td> - </td>
+                                            <td> Successful </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 4. Topic 4 </td>
+                                            <td> 15:30 </td>
+                                            <td> 13:80 </td>
+                                            <td> Successful </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 5. Topic 5 </td>
+                                            <td> 15:30 </td>
+                                            <td> - </td>
+                                            <td> Waiting </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 6. Topic 6 </td>
+                                            <td> 15:30 </td>
+                                            <td> 13:80 </td>
+                                            <td> - </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--<div class="col-md-3">-->
+                    <!-- start sidebar -->
+                    <!--<aside class="sidebar-module sidebar-module-inset">-->
+                        <!-- start single sidebar -->
+                        <!--<div class="sidebar-module">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li><a href="#">Web Design</a></li>
+                                <li><a href="">Web Development</a></li>
+                                <li><a href="">Math</a></li>
+                                <li><a href="">Physics</a></li>
+                                <li><a href="">Camestry</a></li>
+                                <li><a href="">English</a></li>
+                            </ul>
+                        </div>-->
+                        <!-- end single sidebar -->
+                        <!-- start single sidebar -->
+                        <!--<div class="sidebar-module">
+                            <h3>Archives</h3>
+                            <ul>
+                                <li><a href="#">May <span>(25)</span></a></li>
+                                <li><a href="">June <span>(35)</span></a></li>
+                                <li><a href="">July <span>(20)</span></a></li>
+                                <li><a href="">August <span>(125)</span></a></li>
+                                <li><a href="">September <span>(45)</span></a></li>
+                                <li><a href="">October <span>(85)</span></a></li>
+                            </ul>
+                        </div>-->
+                        <!-- end single sidebar -->
+                    <!--</aside>-->
+                    <!-- / end sidebar -->
+                <!--</div>-->
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+
+   
+

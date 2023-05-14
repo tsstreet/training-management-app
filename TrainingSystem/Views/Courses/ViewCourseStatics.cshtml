@@ -1,0 +1,84 @@
+﻿@model TrainingSystem.Models.Courses
+
+@{
+    ViewBag.Title = "View Course Statistics";
+}
+
+<h2>View Course Statistics</h2>
+
+<div class="form-group">
+    @Html.Label("Course")
+    @Html.DropDownList("courseID", null, "-- Select Course --",
+        htmlAttributes: new { @class = "form-control" })
+</div>
+
+<table id="myTable" class="table table-bordered table-striped" style="display:none;">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Duration</th>
+        </tr>
+    </thead>
+</table>
+
+<link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#myTable').DataTable({
+                paging: false,
+                ordering: false,
+                info: false,
+                searching: false
+            });
+
+            $("#courseID").change(function () {
+                var courseID = $("#courseID").val();
+
+                if (!courseID) { // if no course is selected
+                    $("#myTable").hide(); // hide the table
+                    table.clear().draw(false); // remove any data from the table
+                    return; // exit the function
+                }
+
+                var parameter = { courseID: courseID };
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetCourse")",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(parameter),
+                    success: function (data) {
+                        console.log(data);
+                        $("#myTable").show();
+                        table.clear().draw(false);
+                        $.each(data, function (key, value) {
+                            var startDate = moment(value.startDate).format('DD/MM/YYYY');
+                            var endDate = moment(value.endDate).format('DD/MM/YYYY');
+
+                            table.row.add([
+                                value.course_name,
+                                startDate,
+                                endDate,
+                                value.course_duration
+                            ]).draw(false);
+                        });
+                    }
+                });
+            });
+
+            var table = $('#myTable').DataTable();
+        });
+    </script>
+}

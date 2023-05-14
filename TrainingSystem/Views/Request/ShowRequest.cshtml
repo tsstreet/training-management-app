@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TrainingSystem.Models.Request>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Request</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Request", "ShowRequest", "Request")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6 col-xs-5">
+                    @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-success pull-left col-md-2" })
+                </div>
+
+                <div class="input-group col-md-6 col-xs-7">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr class="bg-primary">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.request_subject)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.request_descriptions)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.request_date)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.request_answer)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.request_status)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="Search">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_subject)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_descriptions)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_date)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_answer)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_status)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

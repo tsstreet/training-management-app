@@ -1,0 +1,97 @@
+﻿@model IEnumerable<TrainingSystem.Models.Topic>
+
+@if (Session["Staff_UserName"] == null)
+{
+    //Response.Redirect(Url.Action("Login", "Administrators", null));
+    Response.Redirect(Url.Action("ShowTopic", "Topic", null));
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Topic</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Topic", "Index", "Topic")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6 col-xs-5">
+                    @Html.ActionLink("Add New", "Create", null, new { @class = "btn btn-success pull-left col-md-2" })
+                </div>
+
+                <div class="input-group col-md-6 col-xs-7">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tr class="bg-primary">
+                        <th>
+                            @Html.DisplayNameFor(model => model.topic_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.topic_descriptions)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Courses.course_name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.course_time)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.topic_status)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.topic_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.topic_descriptions)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Courses.course_name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.course_time)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.topic_status)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.topicID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.topicID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

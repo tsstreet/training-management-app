@@ -1,0 +1,147 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<TrainingSystem.Models.Request>
+
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Request</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Request", "Index", "Request")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+
+                <div class="col-md-6 col-xs-5">
+                </div>
+
+                <div class="input-group col-md-6 col-xs-7">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr class="bg-primary">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().request_subject)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().request_descriptions)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().request_date)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().request_answer)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().request_status)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainer.trainer_username)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Trainer.trainer_email)
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="Search">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_subject)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_descriptions)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_date)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_answer)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.request_status)
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("Details", "Trainer", new { id = item.Trainer.trainerID})">@Html.DisplayFor(modelItem => item.Trainer.trainer_username)</a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainer.trainer_email)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.requestID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.requestID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

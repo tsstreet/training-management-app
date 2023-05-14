@@ -1,0 +1,116 @@
+﻿@model IEnumerable<TrainingSystem.Models.AssignCourse>
+
+@{
+    ViewBag.Title = "AssignCourse";
+    //Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Assign Course</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Assign Course", "ShowAssignCourse", "AssignCourse")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6 col-xs-5">
+                </div>
+
+                <div class="input-group col-md-6 col-xs-7">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr class="bg-primary">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Trainer.trainer_username)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Trainer.trainer_fullname)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Courses.course_name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Courses.startDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Courses.endDate)
+                        </th>
+                        <th>
+                            Total Course
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="Search">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainer.trainer_username)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainer.trainer_fullname)
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("ViewDetails", "Courses", new { id =item.Courses.courseID})">@Html.DisplayFor(modelItem => item.Courses.course_name)</a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Courses.startDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Courses.endDate)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

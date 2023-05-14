@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "ScheduleByUser";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Schedule</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Schedule", "ScheduleByUser", "Events")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="calender"></div>
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var events = [];
+            FetchEventAndRenderCalendar();
+            function FetchEventAndRenderCalendar() {
+                events = [];
+                $.ajax({
+                    type: "GET",
+                    url: "/Events/GetEventsByUser",
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            events.push({
+                                eventID: v.eventID,
+                                title: v.courseName,
+                                description: v.room,
+                                start: moment(v.start),
+                                end: moment(v.end)
+                            });
+                        })
+
+                        GenerateCalender(events);
+                    },
+                    error: function (error) {
+                        alert('failed');
+                    }
+                })
+            }
+
+            function GenerateCalender(events) {
+                $('#calender').fullCalendar('destroy');
+                $('#calender').fullCalendar({
+                    defaultView: 'agendaWeek',
+                    allDaySlot: false,
+                    minTime: "07:00",
+                    maxTime: "22:00",
+                    slotDuration: "01:00",
+                    slotLabelInterval: "01:30",
+                    contentHeight: 450,
+                    defaultDate: new Date(),
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: 'agendaWeek, agenda',
+                        center: 'title',
+                        right: 'prev,next'
+                    },
+                    eventLimit: true,
+                    eventColor: '#009688',
+                    events: events,
+
+                    eventRender: function (event, element) {
+                        element.find('.fc-title').append("<br/>" + "at " + event.description);
+                    }
+                })
+
+            }
+        })
+    </script>
+}

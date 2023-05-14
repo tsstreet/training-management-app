@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06429d3457ba413a9139acd597670abf" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Administrators" Width="1.5" PointX="10.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.AssignCourse" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.CourseCategories" Width="1.5" PointX="0.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Courses" Width="1.5" PointX="2.875" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Enroll" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Events" Width="1.5" PointX="5.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Request" Width="1.5" PointX="9.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.sysdiagrams" Width="1.5" PointX="14.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Topic" Width="1.5" PointX="7.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Trainee" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.Trainer" Width="1.5" PointX="7" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalTrainingSystemModel.TrainingStaff" Width="1.5" PointX="11.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_courseID" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_trainerID" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_catID" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_courseID2" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_courseID3" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_courseID5" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_traineeID" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalTrainingSystemModel.fk_trainerID2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

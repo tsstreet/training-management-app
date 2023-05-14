@@ -1,0 +1,145 @@
+﻿@model TrainingSystem.Models.Courses
+
+@{
+    ViewBag.Title = "ViewDetails";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Course Details</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Course Details", "ViewDetails", "Courses")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @*<h3>Course Detail</h3>
+    <hr />*@
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_materials)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_materials)
+        </dd>
+
+        <dd>
+            @Html.ActionLink("Download", "Download", new { courseMaterial = Model.course_materials })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numStd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numStd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseCategories.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseCategories.category_name)
+        </dd>
+
+        <dt>Trainer</dt>
+
+        @foreach (var item in ViewBag.AssignCourse)
+        {
+            <dd>
+                <a href="@Url.Action("Details", "Trainer", new { id =item.Trainer.trainerID})">@item.Trainer.trainer_username</a>
+            </dd>
+
+        }
+
+    </dl>
+</div>
+<br>
+
+<p>
+    @Html.ActionLink("Export to Excel", "ExporttoExcel", new { id = Model.courseID })
+</p>
+
+<table class="table table-bordered">
+    <tr class="bg-info">
+        <th>
+            Trainee Username
+        </th>
+        <th>
+            Trainee Fullname
+        </th>
+        <th>
+            Trainee Email
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.Enroll)
+    {
+        <tr>
+            <td>
+                @item.Trainee.trainee_username
+            </td>
+
+            <td>
+                @item.Trainee.trainee_fullname
+            </td>
+
+            <td>
+                @item.Trainee.trainee_email
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

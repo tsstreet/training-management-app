@@ -1,0 +1,76 @@
+﻿@model TrainingSystem.Models.Enroll
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Delete Enroll</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Detele Enroll", "Delete", "Enroll")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="col-md-12">
+                            <h3>Enroll Information</h3>
+
+                            <dl class="dl-horizontal">
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Courses.course_name)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Courses.course_name)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Trainee.trainee_username)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Trainee.trainee_username)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.enroll_descriptions)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.enroll_descriptions)
+                                </dd>
+                            </dl>
+                            <h4>Are you sure you want to delete this?</h4>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashBoard";
+    //Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!--<div class="list-group">
+    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+        <li>
+            @Html.ActionLink("Change Password", "ChangePassword", "Administrators")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Trainer Accounts", "Index", "Trainer")
+        </li>
+        <li>
+            @Html.ActionLink("Manage Training Staff Accounts", "Index", "TrainingStaff")
+        </li>
+    </ul>
+</div>-->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                    <h2>Admin</h2>
+                    <ol class="breadcrumb">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="active">@Html.ActionLink("Admin Dashboard", "AdminDashBoard", "Administrators")</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-course-content-area">
+                    <div class="mu-course-container mu-course-details">
+                        <div class="col-md-4">
+                            <div class="mu-contact-left">
+                                <img src="~/Images/study.jpg" width="100%" height="450" frameborder="0" style="border:0">
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="mu-contact-right">
+                                <div class="mu-latest-course-single-content">
+                                    <h3>Manage Account</h3>
+                                    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+                                        <li>
+                                            @Html.ActionLink("Change Password", "ChangePassword", "Administrators")
+                                        </li>
+                                    </ul>
+                                    <h3>Manage User</h3>
+                                    <ul style="font-size: 20px; list-style-image: url('../../Images/rocket.png')">
+                                        <li>
+                                            @Html.ActionLink("Manage Trainer Accounts", "Index", "Trainer")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Manage Training Staff Accounts", "Index", "TrainingStaff")
+                                        </li>
+
+                                        <li>
+                                            @Html.ActionLink("Manage Trainee", "Index", "Trainee")
+                                        </li>
+                                    </ul>                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

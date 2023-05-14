@@ -1,0 +1,64 @@
+﻿@model TrainingSystem.Models.Request
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h3>Request Detail</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.request_subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.request_subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.request_descriptions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.request_descriptions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.request_answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.request_answer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.request_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.request_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.request_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.request_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.trainer_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.trainer_username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.requestID }) 
+</p>

@@ -1,0 +1,83 @@
+﻿@model TrainingSystem.Models.TrainingStaff
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h2>Delete Trainer</h2>
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Detele Trainer", "Delete", "Trainer")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="col-md-12">
+                            <h3>Trainer Information</h3>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.staff_username)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.staff_username)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.staff_fullname)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.staff_fullname)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.staff_address)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.staff_address)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.staff_email)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.staff_email)
+                                </dd>
+
+                            </dl>
+
+                            <h4>Are you sure you want to delete this?</h4>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
